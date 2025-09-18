@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../static/4781554.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class="allcon fluid-container">
+        <form action="" method="post" class="centered">
+            <div class="signbg">
+                <h1 class="title">Log In</h1>
+                <input class="inp user" name="username" type="text" placeholder="Username" required maxlength="26" minlength="8">
+                <input class="inp pass" name="password" type="password" placeholder="Password" required maxlength="64" minlength="8">
+                <span class="spn">
+                    Don't Have An Account?
+                    <a href="{{ url_for('signup') }}" class="anchor">Sign Up</a>
+                </span>
+                <input class="submit" type="submit" value="Log In">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
