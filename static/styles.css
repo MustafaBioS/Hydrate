@@ -633,9 +633,20 @@ body {
     color: white;
  }
 
- .progressbar {
-    margin-top: 50px;
-    height: 35px;
-    width: 400px;
-    appearance: none;
- }
+.progressbar {
+  margin-top: 25px;
+  width: 300px;
+  height: 25px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.numbers {
+    font-size: 20px;
+    color: white;
+    margin-top: 10px;
+}
