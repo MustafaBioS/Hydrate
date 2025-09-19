@@ -11,16 +11,168 @@
 <body>
 
         <div class="accountcon">
-            <div class="fakeimg"></div>
+            <img src="{{ current_user.pfp }}" class="pfp" alt="Profile Picture">
         </div>
 
         <div class="fluid-container divcon">
-            <div class="bgdiv">
-                <h1 class="welcoming">Welcome, {{ current_user.username }}</h1>
+            <div class="bgdiv fluid-container">
+                <div class="top fluid-container">
+                    <h1 class="welcoming">Welcome, {{ current_user.username }}</h1>
+                    <h1 class="goal">Goal: {{ current_user.watergoal}} (ML)</h1><br>
+
+                </div>
+
+                <div class="canvascon fluid-container">
+                    <canvas id="myChart"></canvas>
+                    <div class="quickadd fluid-container">
+                        <h1 class="quicktitle">Quick Add</h1>
+                        <div class="btnsq fluid-container">
+                            <button class="addbtn add1">0.5L</button>
+                            <button class="addbtn add2">1L</button>
+                            <button class="addbtn add3">1.5L</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="customadd fluid-container">
+                    <h1 class="customaddtitle">Add Water Intake</h1>
+                    <div class="inputs fluid-container">
+                        <input class="addwater form-control" type="number" placeholder="Log Water (ML)">
+                        <input type="submit" class="add" value="Add">
+                    </div>
+                    <progress class="progressbar"></progress>
+                    <p class="numbers">0 / {{ current_user.watergoal }}</p>
+                </div>
             </div>
         </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+        const quickadd1 = document.querySelector('.add1');
+        const quickadd2 = document.querySelector('.add2');
+        const quickadd3 = document.querySelector('.add3');
+        const customaddinp = document.querySelector('.addwater');
+        const submitadd = document.querySelector('.add');
+        const pfp = document.querySelector('.pfp');
+        const pbar = document.querySelector('.progressbar');
+        const pbartxt = document.querySelector('.numbers');
+
+
+        pfp.addEventListener('click', ()=> {
+            window.location.href = '{{ url_for("user", user_id=current_user.id) }}'
+        })
+
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                datasets: [{
+                    label: 'This Week',
+                    data: [0, 0, 0, 0, 0, 0, 0],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white' 
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: 'white'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: 'white' 
+                        }
+                    }
+                }
+            }
+        });
+
+
+
+        let today = new Date().toISOString().split("T")[0];
+
+        let logs = JSON.parse(localStorage.getItem("waterlogs")) || {};
+
+        let waterlogged = 0;
+
+        let day = new Date().getDay();
+
+        let lastReset = localStorage.getItem("lastReset");
+
+        if (day === 6 && lastReset !== today) {
+            logs = {}
+            localStorage.setItem("lastReset", today);
+        }
+
+        pbar.value = logs[today];
+
+        pbar.max = '{{ current_user.watergoal }}'
+
+        pbartxt.textContent = `${logs[today]} / {{ current_user.watergoal }} ml`;
+
+        function updateChart() {
+
+        let weekday = new Date(today).getDay();
+        chart.data.datasets[0].data[weekday] = logs[today];
+        pbartxt.textContent = `${logs[today]} / {{ current_user.watergoal }} ml`;
+        chart.update();
+    }
+
+        updateChart();
+
+        if (!logs[today]) {
+            logs[today] = 0;
+        }
+
+        quickadd1.addEventListener('click', ()=>{
+            logs[today] += 500;
+            localStorage.setItem("waterlogs", JSON.stringify(logs));
+            console.log("Today total:", logs[today]);
+            updateChart();
+        })
+
+        quickadd2.addEventListener('click', ()=> {
+            logs[today] += 1000;
+            localStorage.setItem("waterlogs", JSON.stringify(logs));
+            console.log("Today total:", logs[today]);
+            updateChart();
+        })
+
+        quickadd3.addEventListener('click', ()=> {
+            logs[today] += 1500;
+            localStorage.setItem("waterlogs", JSON.stringify(logs));
+            console.log("Today total:", logs[today]);
+            updateChart();
+        })
+
+        submitadd.addEventListener('click', ()=>{ 
+            if (customaddinp.value > 0) {
+                let val = parseInt(customaddinp.value);
+                if (val > 0) {
+                    logs[today] += val;
+                    localStorage.setItem("waterlogs", JSON.stringify(logs));
+                    console.log("Today total:", logs[today]);
+                    customaddinp.value = "";
+                    updateChart();
+            }
+            else {
+                alert('Cannot Log Less Than One');
+            }
+        }})
+
+        localStorage.setItem("waterlogs", JSON.stringify(logs));
+
+    </script>
 </body>
 </html>

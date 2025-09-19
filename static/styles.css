@@ -27,13 +27,13 @@ body {
     justify-content: flex-end;
 }
 
-.fakeimg {
+.pfp {
     height: 75px;
     width: 75px;
-    background-color: red;
     border-radius: 50%;
     margin: 35px;
     margin-right: 75px;
+    transition: all 0.3s ease;
 }
 
 .welcoming {
@@ -127,3 +127,515 @@ body {
     background-color: black;
     color: white;
 }
+
+.canvascon {
+    display: flex;
+    width: 60%;
+    margin-left: 50px;
+}
+
+.quickadd {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 100px;
+}
+
+.quicktitle {
+    text-align: center;
+    width: 200px;
+    margin-bottom: 50px;
+    color: white;
+}
+
+.btnsq {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.addbtn {
+    height: 40px;
+    width: 75px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.addbtn:hover {
+    cursor: pointer;
+    transform: translateY(-6px);
+    background-color: black;
+    color: white;
+}
+
+.customadd {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+.customaddtitle {
+    margin-top: 30px;
+    color: white;
+}
+
+.addwater {
+    margin-top: 15px;
+    border-radius: 10px;
+    padding-left: 25px;
+    width: 225px;
+    border: none;
+    outline: none;
+    height: 30px;
+}
+
+.addwater::placeholder {
+    color: black;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.add {
+    height: 32.5px;
+    margin-left: 10px;
+    margin-top: 12.5px;
+    width: 60px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+}
+
+.add:hover {
+    cursor: pointer;
+    transform: translateY(-6px);
+    background-color: black;
+    color: white;   
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.goal {
+    font-size: 45px;
+    color: white;
+    margin-top: 15px;
+    text-align: right;
+    margin-left: 20%;
+}
+
+.usercon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+    width: 100%;
+    margin-left: 150px;
+}
+
+.userbg {
+    height: 750px;
+    width: 1000px;
+    background-color: rgb(10, 55, 97);
+    border-radius: 45px;
+    box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.7);
+}
+
+.userbuttons {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 250px;
+    position: absolute;
+    height: 70%;
+    gap: 25px;
+}
+
+
+.userbtns {
+    width: 200px;
+    height: 45px;
+    outline: none;
+    border: none;
+    font-size: 22.5px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.userbtns:hover {
+    background-color: black;
+    color: white;
+    transform: translateY(-8px);
+}
+
+.userall {
+    height: 100vh;
+    width: 100%;
+}
+
+.usertop {
+    display: flex;
+    flex-direction: row;
+    margin: 75px;
+}
+
+.ppfp {
+    border-radius: 50%;
+    height: 125px;
+}
+
+.username {
+    margin-left: 50px;
+    color: white;
+    font-size: 50px;
+}
+
+.prefcenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rowed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    margin-top: 50px;
+    gap: 50px;
+}
+
+.usertitle {
+    text-align: center;
+    color: white;
+}
+
+.userinp {
+    height: 40px;
+    outline: none;
+    border: none;
+    width: 225px;
+    border-radius: 10px;
+    padding-left: 25px;
+    transition: all 0.3s ease;
+}
+
+.userinp:focus {
+    transform: translateY(-8px);
+}
+
+.userinp::placeholder {
+    color: black;
+}
+
+.change {
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    margin-top: 50px;
+    outline: none;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.change:hover {
+    background-color: black;
+    color: white;
+    transform: translateY(-8px);
+}
+
+.lbl {
+    margin-top: 50px;
+    background-color: white;
+    color: black;
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.lbl:hover {
+    background-color: black;
+    color: white;
+    transform: translateY(-8px); 
+    cursor: pointer;
+}
+
+.chosen {
+    background-color: black;
+    color: white;
+}
+
+.goaldiv {
+    display: none;
+}
+
+.security {
+    display: none;
+}
+
+.account {
+    display: none;
+}
+
+.goaltitle {
+    color: white;
+    font-size: 60px;
+    margin: 50px;
+}
+
+.setgoal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 45vh;
+}
+
+.changegoal {
+    height: 40px;
+    width: 250px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    transition: all 0.3s ease;
+    padding-left: 25px;
+}
+
+.changegoal:focus {
+    transform: translateY(-6px);
+}
+
+.changegoal::placeholder {
+    color: black;
+}
+
+.goalsubmit {
+    margin-top: 25px;
+    height: 45px;
+    width: 150px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+}
+
+.goalsubmit:hover {
+    background-color: black;
+    color: white;
+    transform: translateY(-8px); 
+    cursor: pointer;
+}
+
+.goaltitle2 {
+    color: white;
+    margin-bottom: 75px;
+    font-size: 50px;
+}
+
+.secform {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 175px;
+    gap: 20px;
+}
+
+.passinp {
+    height: 40px;
+    outline: none;
+    border: none;
+    width: 225px;
+    border-radius: 10px;
+    padding-left: 25px;
+    transition: all 0.3s ease;
+}
+
+.passinp:focus {
+    transform: translateY(-8px);
+}
+
+.passinp::placeholder {
+    color: black;
+}
+
+.sectitle {
+    color: white;
+    text-align: center;
+    font-size: 60px;
+    margin-top: 75px;
+}
+
+.secsubmit {
+    margin-top: 20px;
+    background-color: white;
+    color: black;
+    font-size: 18px;
+    height: 50px;
+    width: 150px;
+    padding: 5px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    outline: none;
+    border: none;
+}
+
+.secsubmit:hover {
+    background-color: black;
+    color: white;
+    transform: translateY(-8px); 
+    cursor: pointer;
+}
+
+.accounttitle {
+    text-align: center;
+    color: white;
+    font-size: 60px;
+    margin-top: 75px;
+}
+
+.accbtns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+    gap: 30px;
+}
+
+.accbtn {
+    margin-top: 20px;
+    background-color: white;
+    color: black;
+    font-size: 18px;
+    height: 50px;
+    width: 150px;
+    padding: 5px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    outline: none;
+    border: none;
+}
+
+.accbtn:hover {
+    background-color: black;
+    color: white;
+    transform: translateY(-8px); 
+    cursor: pointer;
+}
+
+.pfp:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.deleteacc:hover {
+    background-color: rgb(95, 25, 25);
+}
+
+.modall {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: absolute;
+    height: 525px;
+    width: 750px;
+    background-color: rgb(10, 55, 97);
+    border-radius: 30px;
+    flex-direction: column;
+    z-index: 51;
+
+}
+
+ .modaloverlay {
+    height: 100%;
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    z-index: 50;
+    top: 0;
+    backdrop-filter: blur(10px);
+ }
+
+ .deletetitle {
+    margin-top: 40px;
+    font-size: 55px;
+    color: white;
+ }
+ 
+
+ .deletecon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    gap: 25px;
+ }
+
+ .deleteinp {
+    height: 40px;
+    width: 250px;
+    padding-left: 20px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+ }
+
+.deleteinp::placeholder {
+    color: black;
+}
+
+ .deleteinp:focus {
+    transform: translateY(-8px);
+ }
+
+ .modaldelete {
+    height: 40px;
+    width: 150px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+ }
+
+ .modaldelete:hover {
+    background-color: rgb(95, 25, 25);
+    transform: translateY(-8px);
+    color: white;
+ }
+
+ .progressbar {
+    margin-top: 50px;
+    height: 35px;
+    width: 400px;
+    appearance: none;
+ }

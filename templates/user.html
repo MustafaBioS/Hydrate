@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../static/4781554.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Home</title>
+</head>
+<body style="overflow: hidden;">
+
+        <div class="accountcon">
+            <img src="{{ current_user.pfp }}" class="pfp" alt="Profile Picture">
+        </div>
+        <div class="userall">
+                <div class="userbuttons fluid-container">
+                    <button class="userbtns profilebtn chosen">Profile</button>
+                    <button class="userbtns goalbtn">Goal</button>
+                    <button class="userbtns securitybtn">Security</button>
+                    <button class="userbtns accountbtn">Account</button>
+                </div>
+
+            <div class="fluid-container usercon">
+                <div class="userbg fluid-container">
+                    
+                    <!-- Profile -->
+                    <div class="profile">
+                        <div class="usertop">
+                            <img src="{{ current_user.pfp }}" alt="Profile Picture" class="ppfp">
+                            <h1 class="username">{{ current_user.username }}</h1>
+                        </div>
+ 
+                        <form class="prefcenter" action="{{ url_for('user', user_id=user_id) }}" method="post">
+                            <h1 class="usertitle">Change Username</h1>
+                            <div class="rowed">
+                                <input type="text" name="newuser" class="userinp" placeholder="Change Username" minlength="8" maxlength="26" required>
+                                <input type="password" name="verify" class="userinp" placeholder="Password" required>
+                            </div>
+                            <input type="submit" value="Change Username" class="change">
+                            <label for="pfpfile" class="lbl">Change Profile Picture</label>
+                        </form>
+                        <form action="{{ url_for('user', user_id=user_id) }}" method="post" class="fileform" enctype="multipart/form-data">
+                            <input id="pfpfile" type="file" name="newpfp" hidden>
+                        </form>
+                    </div>
+
+                    <div class="goaldiv">
+                        <h1 class="goaltitle">Current Goal: {{ current_user.watergoal or 3000 }}</h1>
+                        <form class="setgoal" action="{{ url_for('user', user_id=current_user.id) }}" method="post">
+                            <h1 class="goaltitle2">Change Goal</h1>
+                            <input class="changegoal" type="number" name="newgoal" placeholder="Change Goal" required>
+                            <input class="goalsubmit" type="submit" value="Set Goal"> 
+                        </form>
+                    </div>
+                     
+                    <div class="security">
+                        <h1 class="sectitle">Change Password</h1>
+                        <form class="secform" action="{{ url_for('user', user_id=current_user.id)}}" method="post">
+                            <input class="passinp oldpass" name="oldpass" type="password" placeholder="Old Password" minlength="8" maxlength="64" required>
+                            <input class="passinp newpass" name="newpass" type="password" placeholder="New Password" minlength="8" maxlength="64" required>
+                            <input class="secsubmit" value="Change" type="submit">
+                        </form>
+                    </div>
+
+                    <div class="account">
+                            <h1 class="accounttitle">Account</h1>
+                            <div class="accbtns">
+                                <button class="accbtn logoutbtn">Logout</button>
+                                <button class="accbtn deleteacc">Delete Account</button>
+                            </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="modaloverlay">
+                <div class="modall">
+                    <h1 class="deletetitle">Delete Account</h1>
+                    <form class="deletecon" action="{{ url_for('user', user_id=current_user.id) }}" method="post">
+                        <input type="password" class="deleteinp dpass" name="deletepass" placeholder="Password" required>
+                        <input type="password" class="deleteinp confirm" name="confirmpass" placeholder="Confirm Password" required>
+                        <input class="modaldelete" value="Delete" type="submit">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <script>
+
+        const fileinp = document.querySelector('#pfpfile');
+        const fileform = document.querySelector('.fileform')
+
+        const profilebtn = document.querySelector('.profilebtn');
+        const profile = document.querySelector('.profile');
+
+        const goalbtn = document.querySelector('.goalbtn');
+        const goal = document.querySelector('.goaldiv');
+
+        const securitybtn = document.querySelector('.securitybtn');
+        const security = document.querySelector('.security');
+
+        const accountbtn = document.querySelector('.accountbtn');
+        const account = document.querySelector('.account');
+
+        const logout = document.querySelector('.logoutbtn');
+
+        const deletebtn = document.querySelector('.deleteacc');
+
+        const modal = document.querySelector('.modall');
+        const modaloverlay = document.querySelector('.modaloverlay');
+
+        window.onclick = (e) => {
+        if (e.target === modaloverlay) {
+            modaloverlay.style.display = "none";
+        }
+        };
+
+        deletebtn.addEventListener('click', ()=> {
+            modaloverlay.style.display = 'flex';
+        })
+
+        logout.addEventListener('click', ()=> {
+            window.location.href = '{{ url_for("logout") }}'
+        })
+
+        profilebtn.addEventListener('click', ()=> {
+            profilebtn.classList.add('chosen');
+            goalbtn.classList.remove('chosen');
+            securitybtn.classList.remove('chosen');
+            accountbtn.classList.remove('chosen');
+
+            profile.style.display = 'block';
+            goal.style.display = 'none';
+            security.style.display = 'none';
+            account.style.display = 'none';
+        })
+
+        goalbtn.addEventListener('click', ()=> {
+            goalbtn.classList.add('chosen');
+            profilebtn.classList.remove('chosen');
+            securitybtn.classList.remove('chosen');
+            accountbtn.classList.remove('chosen');
+
+            goal.style.display = 'block';
+            profile.style.display = 'none';
+            security.style.display = 'none';
+            account.style.display = 'none';
+        })
+
+        securitybtn.addEventListener('click', ()=> {
+            securitybtn.classList.add('chosen');
+            profilebtn.classList.remove('chosen');
+            goalbtn.classList.remove('chosen');
+            accountbtn.classList.remove('chosen');
+
+            security.style.display = 'block';
+            profile.style.display = 'none';
+            goal.style.display = 'none';
+            account.style.display = 'none';
+        })
+
+        accountbtn.addEventListener('click', ()=> {
+            accountbtn.classList.add('chosen');
+            goalbtn.classList.remove('chosen');
+            securitybtn.classList.remove('chosen');
+            profilebtn.classList.remove('chosen');
+
+            account.style.display = 'block';
+            goal.style.display = 'none';
+            security.style.display = 'none';
+            profile.style.display = 'none';
+        })
+
+        fileinp.addEventListener('change', ()=> {
+            fileform.submit()
+        })
+
+    </script>
+</body>
+</html>
