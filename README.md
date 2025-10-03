@@ -6,6 +6,6 @@ An input field to add any water intake,
 And a chart to view your water intake throughout the week.**
 ---
 **# Hosting**
-```git clone https://github.com/MustafaBioS/Hydrate.git```
-```cd /Hydrate```
-```python app.py```
+```git clone https://github.com/MustafaBioS/Hydrate.git```<br>
+```cd /Hydrate```<br>
+```python app.py```<br>
