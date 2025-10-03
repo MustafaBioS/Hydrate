@@ -1,2 +1,11 @@
-# Hydrate
-Hydrate web app
+**# Hydrate**
+---
+**Track your water intake with hydrate, hydrate has user authentication, 
+Quick add buttons to add your water intake, 
+An input field to add any water intake,
+And a chart to view your water intake throughout the week.**
+---
+**# Hosting**
+```git clone https://github.com/MustafaBioS/Hydrate.git```
+```cd /Hydrate```
+```python app.py```
