@@ -115,6 +115,10 @@
             localStorage.setItem("lastReset", today);
         }
 
+        if (!logs[today]) {
+            logs[today] = 0;
+        }
+        
         pbar.value = logs[today];
 
         pbar.max = '{{ current_user.watergoal }}'
@@ -130,10 +134,6 @@
     }
 
         updateChart();
-
-        if (!logs[today]) {
-            logs[today] = 0;
-        }
 
         quickadd1.addEventListener('click', ()=>{
             logs[today] += 500;
